@@ -19,6 +19,21 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
 
+<script>
+  GretaOptions = {
+    cache: {
+      time: 2592000000
+    },
+  }
+</script>
+
+<script>
+setTimeout(function(){var a=window.GretaOptions||{};a.lazyLoad=a.lazyLoad||{};var f=a.lazyLoad.imgAttribute||"data-src",g=a.lazyLoad.bgImgAttribute||"data-bg-src",h="DIV SECTION ARTICLE ASIDE B BODY FIGURE HTML I LI MAIN MARK NAV P SPAN STRONG SUMMARY TABLE TIME UL H1 H2 H3 H4 LABEL".split(" "),e=a.lazyLoad.addClassOnLoad||"",a="boolean"===typeof a.lazyLoad.enable?a.lazyLoad.enable:!0;!window.greta&&a&&setInterval(function(){for(var  a,b=document.querySelectorAll("IMG["+f+"]"),c=0;c<b.length;c++)(a=b[c].getAttribute(f))&&b[c].src!==a&&(b[c].src=a,b[c].removeAttribute(f),0<e.length&&(b[c].className+=" "+e));for(c=0;c<h.length;c++)for(var b=document.querySelectorAll(h[c]+"["+g+"]"),d=0;d<b.length;d++)(a=b[d].getAttribute(g))&&b[d].style.backgroundImage!=="url("+a+")"&&(b[d].style.backgroundImage="url("+a+")",b[d].removeAttribute(g),0<e.length&&(b[d].className+=" "+e))},1E3)},1E3);
+</script>
+
+<script src="https://cdn.greta.io/greta.min.js"></script>
+
+
 
 <!-- GENERATED AT http://realfavicongenerator.net/	 -->
 <link rel="apple-touch-icon" sizes="180x180" href="das_framework/project/image/favicon/apple-touch-icon.png">
@@ -110,7 +125,7 @@
 							</p>
 					</div>
 
-				<li style="color:#151947" title="OB1" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
+				<li style="color:#3581B4" title="OB1" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
 					<figure class="deck__figure">
 						<div class="portfolio__brand-logo">
 							<img class="wide" src="das_framework/project/image/portfolio/ob1.svg" alt="OB1"/>
@@ -127,7 +142,7 @@
 							</p>
 					</div>
 
-				<li style="color:#460453" title="Protocol Labs" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
+				<li style="color:#4FC6CF" title="Protocol Labs" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
 					<figure class="deck__figure">
 						<div class="portfolio__brand-logo">
 							<img class="wide" src="das_framework/project/image/portfolio/protocol-labs.svg" alt="Protocol Labs"/>
@@ -144,7 +159,7 @@
 							</p>
 					</div>
 
-				<li style="color:#151947" title="SpaceKnow" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
+				<li style="color:#0090E3" title="SpaceKnow" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
 					<figure class="deck__figure">
 						<div class="portfolio__brand-logo">
 							<img class="wide" src="das_framework/project/image/portfolio/spaceknow.svg" alt="SpaceKnow"/>
@@ -157,6 +172,23 @@
 							<p>
 								<a href="https://medium.com/@BlueYard/spaceknow-a651f532e854">
 									<strong >SpaceKnow</strong> empowers users and organizations to understand the world around them through an AI powered satellite imagery platform
+								</a>
+							</p>
+					</div>
+
+				<li style="color: #FFA935" title="stdlib" class="deck__card js-lurk js-lurk--opacity js-lurk--under">
+					<figure class="deck__figure">
+						<div class="portfolio__brand-logo">
+							<img class="very wide" src="das_framework/project/image/portfolio/stdlib.png" alt="stdlib"/>
+						</div>
+						<figcaption class="deck__url">
+									<a  href="https://stdlib.com/"><span>stdlib.com</span></a>
+							</figcaption>
+						</figure>
+					<div class="deck__text">
+							<p>
+								<a href="https://medium.com/@BlueYard/stdlib-a-standard-library-for-the-web-3dd83f08e332">
+									<strong >StdLib</strong> is building the standard library of the internet for creating, distributing & discovering web services
 								</a>
 							</p>
 					</div>
@@ -201,6 +233,20 @@
 		<section id="updates" class="update deck">
 			<h2 class="js-lurk js-lurk--opacity">Updates</h2>
 			<ul class="deck__list">
+
+			<li class="deck__card js-lurk js-lurk--opacity js-lurk--under">
+				<a href="https://techcrunch.com/2017/06/27/stdlib-just-raised-2-million-to-connect-businesses-via-apis/">
+					<figure class="deck__figure">
+							<img src="das_framework/project/image/update/keith_jacob.jpg" alt="" />
+							<div class="update__brand-logo paintwhite" style="background-image:url('das_framework/project/image/portfolio/stdlib.png');"></div>
+						</figure>
+					<div class="deck__text">
+							<p>
+								<strong>StdLib</strong> just raised $2 million to connect businesses via APIs
+							</p>
+					</div>
+				</a>
+
 			<li class="deck__card js-lurk js-lurk--opacity js-lurk--under">
 				<a href="https://medium.com/@BlueYard/protocol-labs-35ceff61b031">
 					<figure class="deck__figure">
@@ -257,7 +303,7 @@
 				<a href="https://twitter.com/ciaranoleary/status/837360858779037700">
 					<figure class="deck__figure">
 							<img src="das_framework/project/image/update/everyone.jpg" alt="" />
-							<div class="update__brand-logo paintwhite" style="background-image:url('das_framework/project/image/blueyard.svg');"></div>
+							<div class="update__brand-logo" style="background-image:url('das_framework/project/image/blueyard.svg');"></div>
 					</figure>
 					<div class="deck__text">
 							<p>
@@ -265,19 +311,6 @@
 							</p>
 							<p>
 								We're very lucky to be working with all of them.
-							</p>
-					</div>
-				</a>
-
-			<li class="deck__card js-lurk js-lurk--opacity js-lurk--under">
-				<a href="http://www.economist.com/news/business/21717110-analysing-images-space-could-be-big-business-planets-satellites-offer-customers-new-world">
-					<figure class="deck__figure">
-							<img src="das_framework/project/image/update/spaceknow-economist.jpg" alt="" />
-							<div class="update__brand-logo paintwhite" style="background-image:url('das_framework/project/image/portfolio/spaceknow.svg');"></div>
-						</figure>
-					<div class="deck__text">
-							<p>
-								The Economist on <strong>SpaceKnow</strong> and Planet Labs
 							</p>
 					</div>
 				</a>
