@@ -1,0 +1,26 @@
+.portfolio {
+	@include _(background-color-bright);
+}
+.page-main {
+	@include breakpoint(medium) {
+		margin-bottom: $u*2;
+	}
+}
+.page-footer {
+	@include _(background-color-bright);
+		padding: $u 0;
+	@include breakpoint(medium) {
+		padding: $u*2 $u;
+	}
+}
+.portfolio-list, .updates-list {
+	max-width: $site-width;
+	@include _(margin-auto);
+	a {
+		@include _(display-block);
+		@include _(background-color-white);
+	}
+	p {
+		@include _(padding-u);
+	}
+}

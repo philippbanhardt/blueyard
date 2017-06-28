@@ -1,0 +1,764 @@
+//$arrow: "➤";
+$arrow: "➞";
+$item-width: 370;
+$item-height: 240;
+
+.paintwhite {
+			-ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(invert=1)';
+			filter: saturate(0)  contrast(0) brightness(0) invert(100%);
+}
+
+.page-header__banner {
+	@include _(position-fixed);
+	@include _(position-top);
+	z-index: z(fixed);
+	@include _(display-flex);
+	flex-flow: row nowrap;
+	align-items: center;
+	@include _(margin-0);
+	padding: 0 5%;
+	@include _(transition);
+	//@include breakpoint(medium) {
+	//	padding: 0 $u;
+	//}
+	//@include breakpoint(large) {
+	//	padding: 0 $u*2;
+	//}
+	//@include breakpoint(huge) {
+	//	padding: 0 $u*3;
+	//}
+	&:before {
+		content: '';
+		@include _(position-absolute);
+		@include _(position-cover);
+		background-image: $gradient--white;
+		box-shadow: 0px 0px 2px 0px hsla(0, 0%, 0%, .2);
+		mix-blend-mode: difference;
+		@include _(transition);
+		.is-scroll--start & {
+			@include breakpoint(medium) {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+
+.page-header__logo {
+	z-index: z(up);
+	.logo {
+		@include _(transition);
+		@include _(margin-0);
+		$s: 60px;
+		width: $s;
+		height: $s;
+		@include breakpoint(medium) {
+			$s: 90px;
+			width: $s;
+			height: $s;
+			.is-scroll--start &, .is-scroll--end & {
+				$s: 140px;
+				width: $s;
+				height: $s;
+			}
+		}
+		@include _(background-color-white);
+	}
+}
+.page-header__nav {
+	margin: 0 0 0 auto;
+	z-index: z(up);
+@include _(font-size-1);
+	li {
+		@include _(display-inline-block);
+	}
+	a {
+		@include _(display-block);
+		@include _(padding-u2);
+	}
+}
+.page-header__cover {
+	@include _(margin-0);
+	@include _(padding-0);
+	height: 100vh;
+	.body-legal & {
+		height: 20vh;
+	}
+	width: auto;
+	background-color: hsl(190, 15%, 76%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	.no-touchevents & {
+		background-attachment: fixed;
+	}
+	background-image: url('project/image/cover.jpg');
+	@include breakpoint(medium) {
+		background-image: url('project/image/cover--medium.jpg');
+	}
+	@include breakpoint(large) {
+		background-image: url('project/image/cover--large.jpg');
+	}
+	@include breakpoint(huge) {
+		background-image: url('project/image/cover--huge.jpg');
+	}
+}
+.page-header__title {
+	@include _(position-relative);
+	top: 50%;
+	@include _(margin-0-auto);
+	@include _(padding-u2-u);
+	@include _(font-smoothing-legacy);
+	line-height: 1.3;
+	transform: translateY(-50%);
+	transition: font-size .1s 0 ease-in-out;
+	font-size: 6vw;
+	font-family: $title-family;
+	br {
+		display: none;
+	}
+	@include breakpoint(medium) {
+		font-size: 5vw;
+	}
+	@include breakpoint(large) {
+		font-size: 4vw;
+	}
+	@include breakpoint(huge) {
+		font-size: fs(8);
+		br {
+			display: block;
+		}
+	}
+	text-shadow: 0 0 .2em $white;
+	a {
+		&:after {
+			content: $arrow;
+		}
+		&:hover {
+			color: inherit;
+		}
+	}
+}
+
+.deck {
+	&__list {
+		@include _(display-flex);
+		flex-flow: row wrap;
+		justify-content: center;
+		max-width: $site-width;
+		@include _(margin-auto);
+	}
+	&__card {
+		max-width: px2em($item-width+$u); // for IE
+		flex: 1 0 auto;
+		@include _(padding-u-u2);
+		@include breakpoint(large) {
+			flex-basis: px2em($item-width+$u);
+			flex-grow: 0;
+		}
+		@include _(display-flex);
+		flex-flow: column nowrap;
+		background-clip: content-box;
+		> * {
+			flex: none;
+		}
+	}
+	&__figure{
+//		@include _(display-block);
+		height: px2em($item-height);
+		background-color: currentColor;
+		@include _(transition);
+		@include _(display-flex);
+		align-items: center;
+		svg, img {
+			@include _(display-block);
+			width: 100%;
+			height: auto;
+			@include _(margin-auto);
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+	&__url {
+		@include _(position-absolute);
+		@include _(position-cover);
+		@include _(font-size--2);
+		a {
+			@include _(position-absolute);
+			top: 0;
+			right: 0;
+	//		bottom: $u*-1.5;
+			bottom: 0;
+			left: 0;
+			@include _(padding-u2-u);
+			@include _(text-align-right);
+			color: $transparent;
+			&:hover, .touchevents & {
+				@include _(color-white);
+			}
+		}
+		span {
+			@include _(display-block);
+			@include _(position-absolute);
+			@include _(position-bottom);
+			@include _(padding-u2-u);
+			&:after {
+				@include _(display-inline-block);
+				content: $arrow;
+			}
+		}
+	}
+	&__text {
+		margin: $u*2 0;
+		@include _(hyphens);
+		@include _(padding-0-u);
+		@include _(font-size-1);
+		a {
+			@include _(display-inline-block);
+			&:after {
+				content: $arrow;
+			}
+		}
+	}
+}
+
+.portfolio {
+	.deck__card {
+		@include _(background-color-white);
+//		&:hover {
+//			z-index: z(up);
+//			.deck__figure {
+//				@include _(background-color-white);
+//				box-shadow: 0 -1px inset;
+//			}
+//			svg, img {
+//				filter: none;
+//			}
+//			a {
+//				color: currentColor;
+//			}
+//		}
+	}
+	&__brand-logo {
+		width: 100%; // for Mozilla
+		margin: auto;
+		svg, img{
+			max-width: px2em(80);
+			max-height: px2em(80);
+			width: 100%;
+			height: 100%;
+			@include _(transition);
+			@extend .paintwhite;
+			&.wide {
+				max-width: px2em(180);
+				max-height: px2em(40);
+				&.very {
+						max-width: px2em(230);
+						max-height: px2em(60);
+				}
+			}
+			&.tall {
+				max-width: px2em(70);
+				max-height: px2em(90);
+				&.very {
+					max-height: none;
+				}
+			}
+		}
+	}
+}
+
+
+
+.update {
+	.deck__card {
+		@include _(background-color-bright);
+	}
+	.deck__text {
+		p:last-of-type:after {
+			content: $arrow;
+		}
+	}
+	.deck-figure {
+		display: block;
+	}
+	&__brand-logo {
+		@include _(position-absolute);
+		left: $u;
+		bottom: $u/2;
+		height: $u;
+		width: $u*4;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: left bottom;
+	}
+}
+
+
+
+
+$line-height--footer: $u*2;
+.page-footer {
+	@include _(text-align-center);
+	@include breakpoint(large) {
+		@include _(display-flex);
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+}
+.social {
+	@include _(display-inline-block);
+	@include _(padding-u-0);
+	@include breakpoint(medium) {
+		@include _(padding-u);
+	}
+	&__heading {
+		@include _(display-inline-block);
+		@include _(margin-0);
+		@include _(padding-0-u);
+		vertical-align: middle;
+		@include _(font-size-5);
+		line-height: $line-height--footer;
+	}
+	&__nav {
+		@include _(display-inline-block);
+		@include _(padding-0-u2);
+		li {
+			vertical-align: baseline;
+			@include _(display-inline-block);
+			@include _(padding-0-u2);
+		}
+		a {
+			@include _(display-block);
+			padding: 0 $line-height--footer/2;
+			line-height: $line-height--footer;
+			height: $line-height--footer;
+			border: 1px solid $grey;
+			border-radius: $line-height--footer/2;
+			&:hover {
+				border: 1px solid $black;
+				@include _(background-color-black);
+				@include _(color-white);
+			}
+		}
+	}
+}
+.footer__legal {
+	@include _(padding-u);
+	line-height: $line-height--footer;
+	a {
+		white-space: nowrap;
+	}
+}
+
+.legal {
+	@extend section;
+	@include _(text-align-center);
+}
+
+
+.toplink {
+	@include _(position-fixed);
+	z-index: z(modal);
+	bottom: $u;
+	right: $u;
+	@include _(transition);
+	.is-scroll--start & {
+		opacity: 0;
+		visibility: hidden;
+	}
+	&:after {
+		transform: rotateZ(-90deg);
+		width: 2em;
+		height: 2em;
+		line-height: 2;
+		@include _(font-size-5);
+		@include _(display-block);
+		@include _(text-align-center);
+		content: $arrow;
+		@include _(transition);
+	}
+	&:hover:after {
+		@include _(background-color-link);
+		@include _(color-white);
+	}
+}
+
+
+.is-hidden, .no-js .js-only {
+	@include _(hidden);
+}
+%uppercase, .uppercase, .acronym {
+	@include _(uppercase);
+}
+%lowercase, .lowercase {
+	@include _(lowercase);
+}
+
+
+.center {
+	@include _(text-align-center);
+}
+
+
+// responsive boxes
+.responsive-wrapper {
+	@include _(position-relative);
+	width: 100%;
+	height: 0;
+	@include _(overflow-hidden);
+
+////	&.ratiogolden {
+////		padding-bottom: percentage(1/$phi) !important;
+////	}
+//////	&.ratiogolden1 {
+//////		padding-bottom: percentage(1/$phi/$phi) !important;
+//////	}
+//////	&.ratiogolden2 {
+//////		padding-bottom: percentage(1/$phi/$phi/$phi) !important;
+//////	}
+//////	&.ratiogolden3 {
+//////		padding-bottom: percentage(1/$phi/$phi/$phi/$phi) !important;
+//////	}
+//////	&.ratio3x1 {
+//////		padding-bottom: percentage(1/3) !important;
+//////	}
+//////	&.ratio2x1 {
+//////		padding-bottom: percentage(1/2) !important;
+//////	}
+//	&.ratio16x9 {
+//		padding-bottom: percentage(9/16) !important;
+//	}
+////	//&.ratio16x18 {
+////	//	padding-bottom: percentage(18/16) !important;
+////	//}
+//////	&.ratio3x2 {
+//////		padding-bottom: percentage(2/3) !important;
+//////	}
+////////	&.ratio3x4 {
+////////		padding-bottom: percentage(4/3) !important;
+////////	}
+//	&.ratio4x3 {
+//		padding-bottom: percentage(3/4) !important;
+//	}
+//	&.ratio1x1 {
+//		padding-bottom: percentage(1/1) !important;
+//	}
+//	iframe, object, embed, figure {
+//		@include _(position-absolute);
+//		top: 0;
+//		left: 0;
+//		width: 100%;
+//		height: 100%;
+//	}
+}
+
+
+
+// COLOR MATRIX
+@each $color in $list-colors {
+	// _(PLACEHOLDERS) FOR COLORS
+	$bg: background-color-#{nth($color, 1)};
+	$clr: color-#{nth($color, 1)};
+	@include placeholder($bg) { background-color: nth($color, 2); }
+	@include placeholder($clr) { color: nth($color, 2); }
+	// REGULAR SCSS %PLACEHOLDERS:
+	%bg-#{nth($color, 1)} {
+		background-color: nth($color, 2);
+	}
+	%color-#{nth($color, 1)} {
+		color: nth($color, 2);
+	}
+}
+
+
+
+
+$margin: $unit;
+$padding: $unit/2;
+@mixin setgridclasses {
+	.full {
+	 width: 100%;
+	 margin-right: 0;
+	 margin-left: 0;
+	 padding-right: 0;
+	 padding-left: 0;
+	 clear: both;
+	}
+	.half {
+		width: percentage(1/2);
+	}
+	.third {
+		width: percentage(1/3);
+	}
+	.twothird {
+		width: percentage(2/3);
+	}
+	.quarter {
+		width: percentage(1/4);
+	}
+	.threequarter {
+		width: percentage(3/4);
+	}
+	.fifth {
+		width: percentage(1/5);
+	}
+//	.twofifth {
+//		width: percentage(2/5);
+//	}
+//	.threefifth {
+//		width: percentage(3/5);
+//	}
+//	.fourfifth {
+//		width: percentage(4/5);
+//	}
+	.sixth {
+		width: percentage(1/6);
+	}
+	.seventh {
+		width: percentage(1/7);
+	}
+//	.twoseventh {
+//		width: percentage(2/7);
+//	}
+//	.threeseventh {
+//		width: percentage(3/7);
+//	}
+//	.fourseventh {
+//		width: percentage(4/7);
+//	}
+//	.fiveseventh {
+//		width: percentage(5/7);
+//	}
+//	.sixseventh {
+//		width: percentage(6/7);
+//	}
+	.eighth {
+		width: percentage(1/8);
+	}
+	.ninth {
+		width: percentage(1/9);
+	}
+//	.twoninth {
+//		width: percentage(2/9);
+//	}
+//	.fourninth {
+//		width: percentage(4/9);
+//	}
+//	.fiveninth {
+//		width: percentage(5/9);
+//	}
+//	.sevenninth {
+//		width: percentage(7/9);
+//	}
+//	.eigthninth {
+//		width: percentage(8/9);
+//	}
+	.tenth {
+		width: percentage(1/10);
+	}
+//	.threetenth {
+//		width: percentage(3/10);
+//	}
+//	.fivetenth {
+//		width: percentage(5/10);
+//	}
+//	.sevententh {
+//		width: percentage(7/10);
+//	}
+//	.ninetenth {
+//		width: percentage(9/10);
+//	}
+	.eleventh {
+		width: percentage(1/11);
+	}
+	.twelvth {
+		width: percentage(1/12);
+	}
+	.phi-minor, { // goldenratio smaller part
+		@include column($phi-minor,0,1);
+	}
+	.phi-major, { // goldenratio larger part
+		@include column($phi-major,0,1);
+	}
+	.fs-1 {
+		$fs: fs(-1, none);
+		@include column($fs,0,1);
+	}
+	.fs-2 {
+		$fs: fs(-2, none);
+		@include column($fs,0,1);
+	}
+	.fs-3 {
+		$fs: fs(-3, none);
+		@include column($fs,0,1);
+	}
+	.fs-4 {
+		$fs: fs(-4, none);
+		@include column($fs,0,1);
+	}
+	.fs-5 {
+		$fs: fs(-5, none);
+		@include column($fs,0,1);
+	}
+	%left, .left {
+	 float: left;
+	}
+	%right, .right {
+	 float: right;
+	}
+	%clear, .clear {
+		clear: both;
+	}
+	.grid-pull-sixth {
+		margin-right: percentage(1/6);
+		margin-left: 	percentage(1/6);
+	}
+	.grid-pull-fifth {
+		margin-right: percentage(1/5);
+		margin-left: 	percentage(1/5);
+	}
+	.grid-pull-quarter {
+		margin-right: percentage(1/4);
+		margin-left: 	percentage(1/4);
+	}
+	.grid-pull-third {
+		margin-right: percentage(1/3);
+		margin-left: 	percentage(1/3);
+	}
+	.grid-pull-half {
+		margin-right: percentage(1/2);
+		margin-left: 	percentage(1/2);
+	}
+	.grid-push-sixth {
+		margin-right: percentage(1/-6);
+		margin-left: 	percentage(1/-6);
+	}
+	.grid-push-fifth {
+		margin-right: percentage(1/-5);
+		margin-left: 	percentage(1/-5);
+	}
+	.grid-push-quarter {
+		margin-right: percentage(1/-4);
+		margin-left: 	percentage(1/-4);
+	}
+	.grid-push-third {
+		margin-right: percentage(1/-3);
+		margin-left: 	percentage(1/-3);
+	}
+	.grid-push-half {
+		margin-right: percentage(1/-2);
+		margin-left: 	percentage(1/-2);
+	}
+	.pad-right {
+		padding-right: 	$padding;
+	}
+	.pad-left {
+		padding-left: 	$padding;
+	}
+	.pad-top {
+		padding-top: 		$padding;
+	}
+	.pad-bottom {
+		padding-bottom:	$padding;
+	}
+	.pad-h {
+		padding-right: 	$padding;
+		padding-left: 	$padding;
+	}
+	.pad-v {
+		padding-top: 		$padding;
+		padding-bottom:	$padding;
+	}
+	.pad {
+		padding-top: 		$padding;
+		padding-right: 	$padding;
+		padding-bottom:	$padding;
+		padding-left: 	$padding;
+	}
+	.grid-left {
+		float: left;
+		margin-top: 		0;
+		margin-right: 	$margin;
+		margin-bottom: 	$margin;
+		padding: 0 $padding*2 $padding 0;
+	}
+	.grid-right {
+		float: right;
+		margin-top: 		0;
+		margin-bottom: 	$margin;
+		margin-left: 		$margin;
+		padding: 0 0 $padding $padding*2;
+	}
+	.grid-center {
+		clear: both;
+		margin: $margin auto !important;
+	//	text-align: center;
+		> * {
+//			margin-right: auto !important;
+//			margin-left: auto !important;
+		}
+	}
+}
+@if $setGridClasses == true {
+
+	.half,
+	.third,
+	.quarter,
+	.fifth,
+	.sixth,
+	.seventh,
+	.eighth,
+	.ninth,
+	.tenth,
+	.eleventh,
+	.twelvth {
+		width: percentage(1/2);
+	}
+
+	.grid-left {
+		float: left;
+		margin-top: 		0;
+		margin-right: 	$margin;
+		margin-bottom: 	$margin;
+		padding: 0 $padding $padding 0;
+	}
+	.grid-right {
+		float: right;
+		margin-top: 		0;
+		margin-bottom: 	$margin;
+		margin-left: 		$margin;
+		padding: 0 0 $padding $padding;
+	}
+
+
+	@include breakpoint(large) {
+			@include setgridclasses();
+	}
+}
+
+
+//* MEDIA QUERY VIEWPORT /
+
+#responsive-breakpoint {
+	position: fixed;
+	top: -100em;
+	left: -100em;
+	&:after {
+		content: 'small,'+0;
+		@include breakpoint(medium) {
+			content: 'medium,'+$medium_width_pxint;
+		}
+		@include breakpoint(large) {
+			content: 'large,'+$large_width_pxint;
+		}
+		@include breakpoint(huge) {
+			content: 'huge,'+$huge_width_pxint;
+		}
+		@include breakpoint(giant) {
+			content: 'giant,'+$giant_width_pxint;
+		}
+	}
+}

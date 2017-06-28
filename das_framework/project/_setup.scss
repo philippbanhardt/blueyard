@@ -1,0 +1,16 @@
+// ==========================================================
+// = Porject setup                                         =
+// ==========================================================
+// locale setup
+@import "scss/setup/language";
+// establish project colors
+@import "scss/setup/color";
+// establish basic font-size and font-families
+@import "font/myfonts";
+@import "scss/setup/typography";
+// grid and breakpoints
+@import "scss/setup/grid";
+@import "scss/setup/geometry";
+@import "scss/setup/gradient";
+@import "scss/setup/pattern";
+@import "scss/setup/transition";
